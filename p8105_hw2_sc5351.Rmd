@@ -9,7 +9,7 @@ date: "2023-10-02"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
+## Problem 1
 ```{r}
 library(tidyverse)
 library(readxl)
@@ -40,6 +40,21 @@ snp =
   arrange(year, month) |>
   mutate(month = month.name[month]) |>
   select(year, month, close) 
+
+```
+## tidy the unemployment data 
+```{r}
+unemployment = 
+  read_csv("./data/fivethirtyeight_datasets/unemployment.csv") |>
+  rename(year = Year) |>
+  pivot_longer(
+    Jan:Dec,
+    names_to = "month_abb",
+    values_to = "unemployment"
+  ) |>
+  left_join(x =_, y = month_df) |>
+  select(year, month, unemployment)
+
 
 ```
 
