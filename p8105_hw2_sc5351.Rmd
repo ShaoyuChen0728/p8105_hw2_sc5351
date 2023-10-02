@@ -32,4 +32,14 @@ pols =
   select(year, month, everything(), -day, -starts_with("prez"))
 
 ```
+## Clean the data in snp.csv
+```{r}
+snp = 
+  read_csv("./data/fivethirtyeight_datasets/snp.csv") |>
+  separate(date, into = c("month", "day", "year"), convert = TRUE) |>
+  arrange(year, month) |>
+  mutate(month = month.name[month]) |>
+  select(year, month, close) 
+
+```
 
