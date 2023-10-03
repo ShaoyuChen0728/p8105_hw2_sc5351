@@ -122,4 +122,9 @@ gwyn_trash_wheel =
 gwyn_trash_wheel
 ```
 
+Combining three datasets
+```{r}
+trash_wheel_tidy = bind_rows(mr_trash_wheel, prof_trash_wheel, gwyn_trash_wheel)
+trash_wheel_tidy
+```
 
