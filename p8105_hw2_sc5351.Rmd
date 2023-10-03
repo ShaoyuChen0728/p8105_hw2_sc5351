@@ -57,4 +57,11 @@ unemployment =
 
 
 ```
+## Join the datasets by merging snp into pols, and merging unemployment into the result.
+```{r}
+data = 
+  left_join(pols, snp) |>
+  left_join(x = _, y = unemployment)
+str(data)
+```
 
