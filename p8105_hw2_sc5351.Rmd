@@ -104,4 +104,22 @@ prof_trash_wheel =
 prof_trash_wheel
 ```
 
+read and clean Gwynnda trash wheel
+```{r}
+gwyn_trash_wheel = 
+  read_excel(
+    "./data/202309 Trash Wheel Collection Data.xlsx",
+    sheet = "Gwynnda Trash Wheel",
+    range = "A2:L157",
+    skip = 1) |>
+  janitor::clean_names() |>
+  separate(date, into = c("year", "month", "day"), convert = TRUE) |>
+  mutate(
+  homes_powered = (weight_tons * (500/30)),
+  month = month.name[as.numeric(month)],
+  gwyn_wheel_name = "Gwynnda Trash Wheel"
+  )
+gwyn_trash_wheel
+```
+
 
