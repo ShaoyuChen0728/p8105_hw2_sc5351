@@ -131,3 +131,20 @@ The final tidy dataset contains with 3 trash wheels and has totally 845 rows and
 Key variables are dumpster, year, month, day, weight_tons, homes_powered.
 The total weight of trash collected by Professor Trash Wheel is 216.26 tons.
 The total number of cigarette butts collected by Gwynnda in July of 2021 is 16300.
+
+##Problem 3
+
+import,clean and tidy the baseline.
+```{r}
+mci_baseline = 
+  read_csv("./data/data_mci/MCI_baseline.csv", skip = 1) |>
+  janitor::clean_names() |>
+  mutate(
+    sex = recode(sex, "1" = "Male", "0" = "Female"),
+    apoe4 = recode(apoe4, "1" = "carrier", "0" = "no carrier")
+  ) |>
+  filter(age_at_onset != "." )
+mci_baseline
+```
+
+
