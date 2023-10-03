@@ -64,8 +64,26 @@ data =
   left_join(x = _, y = unemployment)
 str(data)
 ```
-## Problem 2
-```{r}
 
+
+
+## Problem 2
+read and clean trash wheel data
+```{r read and clean trash wheel data}
+mr_trash_wheel = 
+  read_excel(
+    "./data/202309 Trash Wheel Collection Data.xlsx",
+    sheet = 1,
+    range = "A2:N586",
+    skip = 1) |>
+  janitor::clean_names() |>
+  separate(date, into = c("year", "month", "day"), convert = TRUE) |>
+  mutate(
+  homes_powered = (weight_tons * (500/30)),
+  month = month.name[as.numeric(month)],
+  trash_wheel_name = "Mr. Trash Wheel"
+  )
+mr_trash_wheel
 ```
+
 
