@@ -127,4 +127,7 @@ Combining three datasets
 trash_wheel_tidy = bind_rows(mr_trash_wheel, prof_trash_wheel, gwyn_trash_wheel)
 trash_wheel_tidy
 ```
-
+The final tidy dataset contains with 3 trash wheels and has totally 845 rows and 17 columns.
+Key variables are dumpster, year, month, day, weight_tons, homes_powered.
+The total weight of trash collected by Professor Trash Wheel is 216.26 tons.
+The total number of cigarette butts collected by Gwynnda in July of 2021 is 16300.
