@@ -145,9 +145,10 @@ mci_baseline =
   mutate(
     sex = recode(sex, "1" = "Male", "0" = "Female"),
     apoe4 = recode(apoe4, "1" = "carrier", "0" = "no carrier")
-  ) |>
-  filter(age_at_onset != "." )
+  )
 mci_baseline
+mci_baseline_remove = filter(mci_baseline, age_at_onset != "." )
+mci_baseline_remove
 ```
-Important steps in the import process 
+Important steps in the import process are 
 
