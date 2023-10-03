@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(readxl)
 ```
-## Clean the data in pols-month.csv.
+Clean the data in pols-month.csv.
 ```{r}
 
 month_df = 
@@ -32,7 +32,7 @@ pols =
   select(year, month, everything(), -day, -starts_with("prez"))
 
 ```
-## Clean the data in snp.csv
+Clean the data in snp.csv
 ```{r}
 snp = 
   read_csv("./data/fivethirtyeight_datasets/snp.csv") |>
@@ -42,7 +42,7 @@ snp =
   select(year, month, close) 
 
 ```
-## tidy the unemployment data 
+tidy the unemployment data 
 ```{r}
 unemployment = 
   read_csv("./data/fivethirtyeight_datasets/unemployment.csv") |>
@@ -57,11 +57,15 @@ unemployment =
 
 
 ```
-## Join the datasets by merging snp into pols, and merging unemployment into the result.
+Join the datasets by merging snp into pols, and merging unemployment into the result.
 ```{r}
 data = 
   left_join(pols, snp) |>
   left_join(x = _, y = unemployment)
 str(data)
+```
+## Problem 2
+```{r}
+
 ```
 
