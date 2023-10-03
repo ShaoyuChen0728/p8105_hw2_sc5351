@@ -127,10 +127,13 @@ Combining three datasets
 trash_wheel_tidy = bind_rows(mr_trash_wheel, prof_trash_wheel, gwyn_trash_wheel)
 trash_wheel_tidy
 ```
-The final tidy dataset contains with 3 trash wheels and has totally 845 rows and 17 columns.
-Key variables are dumpster, year, month, day, weight_tons, homes_powered.
-The total weight of trash collected by Professor Trash Wheel is 216.26 tons.
-The total number of cigarette butts collected by Gwynnda in July of 2021 is 16300.
+The final tidy dataset contains with 3 trash wheels and has totally `r nrow(trash_wheel_tidy)` rows and `r ncol(trash_wheel_tidy)` columns.
+
+Key variables are `dumpster`, `year`, `month`, `day`, `weight_tons`, `homes_powered`.
+
+The total weight of trash collected by Professor Trash Wheel is `r sum(pull(prof_trash_wheel, weight_tons))` tons.
+
+The total number of cigarette butts collected by Gwynnda in July of 2021 is `r filter(gwyn_trash_wheel, month == "July", year == 2021) |> pull(cigarette_butts) |> sum() |> as.integer()`.
 
 ##Problem 3
 
@@ -146,5 +149,5 @@ mci_baseline =
   filter(age_at_onset != "." )
 mci_baseline
 ```
-
+Important steps in the import process 
 
