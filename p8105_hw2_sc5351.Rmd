@@ -169,6 +169,6 @@ mci_amyloid =
   rename("id" = "study_id")
 mci_amyloid
 ```
-
+comment: in order to match the baseline dataset, I renamed `study_id` to `id`. There are totally `r nrow(mci_amyloid)` participants appear in amyloid datasets.
 
 
