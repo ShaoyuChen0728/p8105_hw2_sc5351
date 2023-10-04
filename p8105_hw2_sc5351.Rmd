@@ -161,6 +161,14 @@ The average baseline age is `r mean(mci_baseline$current_age)`.
 
 The proporton of women in the study are APOE4 carriers is `r scales::percent(nrow(filter(mci_baseline, sex == "Female" & apoe4 == "carrier")) / nrow(filter(mci_baseline, sex == "Female")))`.
 
+Import, clean, and tidy the amyloid.
+```{r}
+mci_amyloid =
+  read_csv("./data/data_mci/mci_amyloid.csv", skip = 1) |>
+  janitor::clean_names() |>
+  rename("id" = "study_id")
+mci_amyloid
+```
 
 
 
