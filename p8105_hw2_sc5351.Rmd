@@ -171,4 +171,12 @@ mci_amyloid
 ```
 comment: in order to match the baseline dataset, I renamed `study_id` to `id`. There are totally `r nrow(mci_amyloid)` participants appear in amyloid datasets.
 
+Then, check whether some participants appear in only the baseline or amyloid datasets
+```{r}
+join_full = 
+  full_join(mci_baseline, mci_amyloid, by = c("id"))
+join_full
+```
+comment:`r nrow(join_full) - nrow(mci_amyloid)` participants are only in the baseline dataset. `r nrow(join_full) - nrow(mci_baseline)` participants only are only in the amyloid dataset.
+
 
