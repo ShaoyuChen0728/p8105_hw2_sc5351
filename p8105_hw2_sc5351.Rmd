@@ -186,4 +186,9 @@ join_inner
 ```
 Comment: `r nrow(join_inner)` participants appear in both datasets, and it has `r ncol(join_inner)` columns.
 
+Export the result as a CSV to my data directory.
+```{r}
+write.csv(join_inner, "./data/mci.csv")
+```
+
 
