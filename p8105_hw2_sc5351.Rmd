@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(tidyverse)
 library(readxl)
+library(dplyr)
 ```
 Clean the data in pols-month.csv.
 ```{r}
@@ -146,9 +147,20 @@ mci_baseline =
     sex = recode(sex, "1" = "Male", "0" = "Female"),
     apoe4 = recode(apoe4, "1" = "carrier", "0" = "no carrier")
   )
-mci_baseline
+
 mci_baseline_remove = filter(mci_baseline, age_at_onset != "." )
-mci_baseline_remove
+
 ```
-Important steps in the import process are 
+Important steps in the import process are to convert `sex` and `apoe4` into non numerical values, and remove any participants who do not meet `age_at_onest`.
+
+`r nrow(mci_baseline)` were recruited at baseline. 
+
+`r nrow(mci_baseline_remove)` participants developed MCI.
+
+The average baseline age is `r mean(mci_baseline$current_age)`.
+
+The proporton of women in the study are APOE4 carriers is `r scales::percent(nrow(filter(mci_baseline, sex == "Female" & apoe4 == "carrier")) / nrow(filter(mci_baseline, sex == "Female")))`.
+
+
+
 
