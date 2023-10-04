@@ -179,4 +179,11 @@ join_full
 ```
 comment:`r nrow(join_full) - nrow(mci_amyloid)` participants are only in the baseline dataset. `r nrow(join_full) - nrow(mci_baseline)` participants only are only in the amyloid dataset.
 
+Combine the demographic and biomarker datasets so that only participants who appear in both datasets are retained.
+```{r}
+join_inner = inner_join(mci_baseline, mci_amyloid, by = c("id"))
+join_inner
+```
+Comment: `r nrow(join_inner)` participants appear in both datasets, and it has `r ncol(join_inner)` columns.
+
 
